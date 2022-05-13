@@ -8,15 +8,20 @@ Following are the steps to run the project:
 user_email = your email
 user_password = your password
 ```
-2. #### Configure the .env.test file
+2. #### Create a .env.test file and assign a secret key in it
+```
+
+JWT_SECRET_KEY = 'your secret key'
+```
+3. #### Configure the .env.test file
 ```
 set envFile = location of file
 ```
-3. #### Install Libraries 
+4. #### Install Libraries 
 ```
 pip install -r requirements.txt
 ```
-4. #### Run the server
+5. #### Run the server
 ```
 python app.py
 ```
