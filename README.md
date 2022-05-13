@@ -1,4 +1,4 @@
-# Flask-restful-API
+# Flask-restful-API for Covid Data
 Created a Restful API in Flask that provides a few CRUD endpoints for the sample covid data. In this project I've mainly focused on authentication/authorization, security, documentation using Swagger, and testing. I've stored confidential credentials in a .env file and login credentials are stored in environment variables of the system.
 
 Following are the steps to run the project:
