@@ -10,7 +10,6 @@ user_password = your password
 ```
 2. #### Create a .env.test file and assign a secret key in it
 ```
-
 JWT_SECRET_KEY = 'your secret key'
 ```
 3. #### Configure the .env.test file
@@ -25,7 +24,10 @@ pip install -r requirements.txt
 ```
 python app.py
 ```
-
+6. #### Go to the browser and write url
+```
+localhost:portNumber/swagger
+```
 Following are the steps to run the tests:
 1. #### To run the sign in test
 ```
