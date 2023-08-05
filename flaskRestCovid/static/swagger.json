@@ -1,0 +1,397 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "sean",
+    "version": "1.0.0",
+    "title": "Seans-Python3-Flask-Rest-Boilerplate",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "paths": {
+    "/api/v1.0/auth/signin": {
+      "post": {
+        "tags": [
+          "Sign In"
+        ],
+        "summary": "Sign In",
+        "requestBody": {
+          "description": "Sign In to create token",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/signInRequestPostBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/api/v1.0/country/{iso_code}": {
+      "parameters": [
+        {
+          "name": "iso_code",
+          "in": "path",
+          "required": true,
+          "description": "ID of the iso code that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "CRUD operations for Covid Data"
+        ],
+        "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+        "summary": "Get api request with given ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "iso_code",
+            "required": true,
+            "description": "API ISO Code",
+            "schema": {
+              "$ref": "#/components/schemas/iso_code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Request not found."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRUD operations for Covid Data"
+        ],
+        "security": [
+         {
+            "bearerAuth": []
+           }
+        ],
+        "summary": "Post api request by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "iso_code",
+            "required": true,
+            "description": "API ISO Code",
+            "schema": {
+              "$ref": "#/components/schemas/iso_code"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "API Request Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/continentDataRequestPostBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CRUD operations for Covid Data"
+        ],
+        "security": [
+         {
+            "bearerAuth": []
+           }
+        ],
+        "summary": "Put api request by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "iso_code",
+            "required": true,
+            "description": "API ISO Code",
+            "schema": {
+              "$ref": "#/components/schemas/iso_code"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "API Request Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/continentDataRequestPutBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CRUD operations for Covid Data"
+          ],
+        "security": [
+         {
+            "bearerAuth": []
+           }
+          ],
+        "summary": "Delete API Request by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "iso_code",
+            "required": true,
+            "description": "API ISO Code",
+            "schema": {
+              "$ref": "#/components/schemas/iso_code"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. API Request not found."
+          }
+        }
+      }
+    },
+    "/api/v1.0/country/{iso_code}/{date}": {
+      "parameters": [
+        {
+          "name": "iso_code",
+          "in": "path",
+          "required": true,
+          "description": "ID of the iso code that we want to match",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "description": "ID of the date that we want to fetch",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "CRUD operations for Covid Data"
+        ],
+        "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+        "summary": "Get date of specific country",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "iso_code",
+            "required": true,
+            "description": "API ISO Code",
+            "schema": {
+              "$ref": "#/components/schemas/iso_code"
+            }
+          },
+          {
+            "in": "path",
+            "name": "date",
+            "required": true,
+            "description": "Date",
+            "schema": {
+              "$ref": "#/components/schemas/date"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. API Request not found."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "iso_code": {
+        "properties": {
+          "iso_code_id": {
+            "type": "string"
+          }
+        }
+      },
+      "date": {
+        "properties": {
+          "date": {
+            "type": "string"
+          }
+        }
+      },
+      "signInRequestPostBody": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password"
+          }
+        }
+      },
+      "continentDataRequestPostBody": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total_cases": {
+            "type": "number",
+            "format": "float"
+          },
+          "new_cases": {
+            "type": "number",
+            "format": "float"
+          },
+          "total_cases_per_million": {
+            "type": "number",
+            "format": "float"
+          },
+          "new_cases_per_million": {
+            "type": "number",
+            "format": "float"
+          },
+          "stringency_index": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "continentDataRequestPutBody": {
+        "type": "object",
+        "properties": {
+          "continent": {
+            "type": "string",
+            "format": "string"
+          },
+          "location": {
+            "type": "string",
+            "format": "string"
+          },
+          "population": {
+            "type": "number",
+            "format": "float"
+          },
+          "population_density": {
+            "type": "number",
+            "format": "float"
+          },
+          "median_age": {
+            "type": "number",
+            "format": "float"
+          },
+          "aged_65_older": {
+            "type": "number",
+            "format": "float"
+          },
+          "aged_70_older": {
+            "type": "number",
+            "format": "float"
+          },
+          "gdp_per_capita": {
+            "type": "number",
+            "format": "float"
+          },
+          "cardiovasc_death_rate": {
+            "type": "number",
+            "format": "float"
+          },
+          "diabetes_prevalence": {
+            "type": "number",
+            "format": "float"
+          },
+          "handwashing_facilities": {
+            "type": "number",
+            "format": "float"
+          },
+          "hospital_beds_per_thousand": {
+            "type": "number",
+            "format": "float"
+          },
+          "life_expectancy": {
+            "type": "number",
+            "format": "float"
+          },
+          "human_development_index": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
